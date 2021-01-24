@@ -1,6 +1,11 @@
 var password = document.querySelector("[name='password'");
 var button = document.querySelector("button");
 var errorContainer = document.querySelector(".errors");
+var MessageType;
+(function (MessageType) {
+    MessageType["Warning"] = "warning";
+    MessageType["Error"] = "error";
+})(MessageType || (MessageType = {}));
 // let errors: string[] = [];
 var errors = [];
 function validate() {
@@ -8,16 +13,16 @@ function validate() {
     errors = [];
     clearContainer();
     if (value.trim().length < 5) {
-        errors.push("Too few characters");
+        errors.push({ type: MessageType.Warning, message: "Too few characters" });
     }
     if (value.includes(" ")) {
-        errors.push("No spaces allowed");
+        errors.push({ type: MessageType.Error, message: "No spaces allowed" });
     }
     errors.forEach(function (error) {
         var errorDiv = document.createElement("div");
-        var errorContent = document.createTextNode(error);
+        var errorContent = document.createTextNode(error.message);
         errorDiv.appendChild(errorContent);
-        errorDiv.classList.add("error");
+        errorDiv.classList.add(error.type);
         errorContainer.appendChild(errorDiv);
     });
     button.disabled = !buttonEnabled();
