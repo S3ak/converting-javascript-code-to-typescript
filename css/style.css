@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 3rem;
+}
+
+input {
+	padding: 10px;
+	width: 300px;
+}
+
+button {
+	padding: 10px;
+	width: 300px;
+	margin-top: 3px;
+}
+
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.errors {
+	margin-top: 1rem;
+}
+
+.error {
+	color: red;
+}
