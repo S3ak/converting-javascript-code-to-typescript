@@ -1,10 +1,9 @@
-var password = document.querySelector("[name='password'");
-var button = document.querySelector("button");
-var errorContainer = document.querySelector(".errors");
-// let errors: string[] = [];
-var errors = [];
+const password = document.querySelector("[name='password'");
+const button = document.querySelector("button");
+const errorContainer = document.querySelector(".errors");
+let errors = [];
 function validate() {
-    var value = this.value;
+    const value = this.value;
     errors = [];
     clearContainer();
     if (value.trim().length < 5) {
@@ -14,8 +13,8 @@ function validate() {
         errors.push("No spaces allowed");
     }
     errors.forEach(function (error) {
-        var errorDiv = document.createElement("div");
-        var errorContent = document.createTextNode(error);
+        const errorDiv = document.createElement("div");
+        const errorContent = document.createTextNode(error);
         errorDiv.appendChild(errorContent);
         errorDiv.classList.add("error");
         errorContainer.appendChild(errorDiv);
@@ -34,3 +33,36 @@ function buttonEnabled() {
     }
     return false;
 }
+//
+var MessageType;
+(function (MessageType) {
+    MessageType["Error"] = "ERROR";
+    MessageType["Warning"] = "WARNING";
+})(MessageType || (MessageType = {}));
+function generateMessage(message) {
+    switch (message.severity) {
+        case MessageType.Error:
+            return `This is SERIOUS: ${message.content}`;
+        case MessageType.Warning:
+            return `This is KIND OF SERIOUS: ${message.content}`;
+        default:
+            return "We're not sure what's going on.";
+    }
+}
+const navMenu = {
+    list: [
+        {
+            title: "home",
+            href: "http://google.com",
+            order: 1,
+        },
+    ],
+    code: "isAuth",
+};
+var Color;
+(function (Color) {
+    Color["Red"] = "#bbb";
+    Color["Blue"] = "#222";
+    Color["Grey"] = "#fff";
+})(Color || (Color = {}));
+Color.Blue;
